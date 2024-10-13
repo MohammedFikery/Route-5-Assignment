@@ -1,0 +1,406 @@
+/* ======================Start Global====================== */
+:root {
+  /* ? ######## Colors */
+  --color-default: #212529;
+  --primary-hue: 0;
+  --primary-saturation: 84%;
+  --primary-lightness: 44%;
+  --color-primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-lightness)
+  );
+  --color-secondary: #37373f;
+  --color-tertiary: #7f7f90;
+  --color-light-grey: #eee;
+  --color-light-white: white;
+  /* ? ######## Fonts */
+  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Amatic SC", sans-serif;
+  --font-secondary: "Inter", sans-serif;
+  /* ? ######## Animation options */
+  --animation-duration: 400ms;
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  line-height: 1.4;
+}
+body {
+  font-family: "Inter", sans-serif;
+  height: 100%;
+  width: 100%;
+  color: #333;
+}
+picture,
+img {
+  display: block;
+  width: 100%;
+}
+a,
+span {
+  color: inherit;
+  display: inline-block;
+}
+.container {
+  width: 80%;
+  margin: auto;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-secondary);
+}
+.clear-float {
+  clear: both;
+}
+.btn {
+  --background-color: transparent;
+  --color: var(--color-light);
+  --padding: 0.3125rem 0.75rem;
+  --border-width: 0.125rem;
+  --border-color: transparent;
+  --border-radius: 1rem;
+  --hover-bg-color: transparent;
+  --hover-color: transparent;
+  --font-size: 1rem;
+  padding: var(--padding);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  color: var(--color);
+  font-size: var(--font-size);
+  cursor: pointer;
+  transition: background-color var(--animation-duration),
+    color var(--animation-duration);
+}
+
+.btn:hover {
+  background-color: var(--hover-bg-color);
+  color: var(--hover-color);
+}
+/* ======================End Global====================== */
+/*^====================== Reusable Classes ====================== */
+
+.section-bg {
+  background-color: var(--color-light-grey);
+}
+
+.btn-main {
+  --background-color: var(--color-primary);
+  --hover-bg-color: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    calc(var(--primary-lightness) + 5%)
+  );
+  --hover-color: var(--color-light);
+  --padding: 0.375rem 1.125rem;
+  --font-size: 0.9375rem;
+  --border-radius: 100vh;
+}
+
+.main-title {
+  text-align: center;
+  margin-bottom: 1.5625rem;
+}
+
+.main-title h2 {
+  color: var(--color-tertiary);
+  font-weight: 400;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.main-title p {
+  font-size: 3.125rem;
+  font-family: var(--font-primary);
+}
+
+.main-title span {
+  color: var(--color-primary);
+}
+/* ============================ start navbar ============================= */
+.navbar {
+  background-color: var(--color-light);
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 0px 0px 14px 0px #0000001b;
+  background-color: var(--color-light-white);
+}
+
+.navbar .nav-container {
+  --padding: 1.5625rem 0.3125rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-light-white);
+  height: 80px;
+  margin-inline: 80px;
+}
+
+.logo {
+  font-size: 30px;
+  font-family: var(--font-default);
+}
+
+.logo::after {
+  content: ".";
+  color: var(--color-primary);
+}
+
+.nav-links ul {
+  --inline-gap: 0.9375rem;
+  --block-gap: 0.3125rem;
+  display: flex;
+  font-size: 1.0625rem;
+  color: var(--color-tertiary);
+  font-weight: 600;
+}
+.navbar .nav-links a {
+  padding: var(--block-gap) var(--inline-gap);
+  position: relative;
+  transition: color var(--animation-duration);
+}
+
+.navbar .nav-links a::before {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: var(--inline-gap);
+  width: 0px;
+  height: 3px;
+  background-color: var(--color-primary);
+  transition: width var(--animation-duration);
+}
+
+.navbar .nav-links a:hover {
+  color: #000;
+}
+.home-active {
+  border-bottom: 3px solid var(--color-primary);
+}
+.navbar .nav-links a:hover::before,
+.navbar a:hover a::before {
+  width: calc(100% - (var(--inline-gap) * 2));
+}
+
+.navbar .menu-icon {
+  cursor: pointer;
+  font-size: 1.5625rem;
+}
+.nav-container #menu {
+  display: none;
+}
+.navbar .nav-container label {
+  margin-left: auto;
+  display: none;
+}
+/* ============================ End navbar ============================= */
+/* ============================ start Home ============================= */
+.home {
+  min-height: 100vb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-light-grey);
+}
+.home .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.container .header-content {
+  width: 50%;
+}
+.header-content h2 {
+  color: var(--color-secondary);
+  font-family: var(--font-primary);
+  font-size: 4.0625rem;
+}
+.header-content p {
+  margin-block: 20px;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #4f4f5a;
+}
+.header-content .btn-group {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.home .btn-main {
+  --padding: 0.625rem 1.5625rem;
+  --border-radius: 0px 100vh 100vh;
+}
+.header-content .video-btn {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  transition: color var(--animation-duration);
+}
+.video-btn:hover {
+  color: var(--color-primary);
+}
+.video-btn .icon {
+  width: 3.4375rem;
+  height: 3.4375rem;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary) 0 50%,
+    transparent 50% 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  margin-right: 0.3125rem;
+  position: relative;
+}
+.video-btn .icon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-light-white);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: inherit;
+}
+.video-btn .icon i {
+  z-index: 5;
+}
+.home .header-image img {
+  width: 100%;
+  filter: drop-shadow(4px 4px 9px #000a);
+}
+.home .header-image img:hover {
+  animation: shake 1s infinite;
+}
+@keyframes shake {
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+/* ============================ End Home ============================= */
+/* ============================ start CHEFS ============================= */
+#CHEFS {
+  padding-block: 60px;
+}
+#CHEFS .container .CHEFS-about {
+  text-align: center;
+}
+#CHEFS .container .CHEFS-about h2 {
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+  color: var(--color-tertiary);
+  font-weight: 400;
+}
+.CHEFS-about p {
+  font-family: "Amatic SC";
+  font-size: 50px;
+  font-weight: 400;
+  color: RGB(33, 37, 41);
+  margin-block: 30px;
+}
+.CHEFS-about p span {
+  color: var(--color-primary);
+}
+.container .CHEFS-images {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.CHEFS-images .CHEFS-items {
+  width: calc((100% / 3) - 20px);
+  transition: all 0.5s;
+}
+.CHEFS-images .CHEFS-items:hover {
+  scale: 1.1;
+}
+.CHEFS-images .CHEFS-items .CHEFS-img {
+  position: relative;
+  overflow: hidden;
+  transition: all 1s;
+}
+.CHEFS-images .CHEFS-items .CHEFS-img .layer {
+  position: absolute;
+  top: 20%;
+  left: 100%;
+  width: 10%;
+}
+.CHEFS-images .CHEFS-items .CHEFS-img:hover .layer {
+  top: 20%;
+  left: 80%;
+  width: 10%;
+  background-color: var(--color-light-grey);
+  transition: all 0.5s 0.5s;
+}
+.CHEFS-items .CHEFS-img .layer li {
+  text-align: center;
+  margin-block: 10px;
+  font-size: 25px;
+}
+.CHEFS-images .CHEFS-items .CHEFS-aboutimages {
+  text-align: center;
+}
+.CHEFS-items .CHEFS-aboutimages h3 {
+  font-size: 18.72px;
+  font-family: Inter, sans-serif;
+  color: RGB(33, 37, 41);
+  font-weight: 700;
+}
+.CHEFS-items .CHEFS-aboutimages span {
+  margin: 5px 0px 10px;
+  font-size: 14px;
+  font-family: "Open Sans";
+  font-weight: 400;
+}
+
+/* ============================ End CHEFS ============================= */

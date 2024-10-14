@@ -2,24 +2,49 @@
   body {
     background-color: tomato;
   }
+  #home {
+    min-height: 50vh;
+  }
 }
 @media screen and (max-width: 1280px) {
   body {
     background-color: #09c;
+  }
+  #gallery .gallery-images .col {
+    width: calc((100% - 30px) / 2);
+  }
+
+  #CONTACT .container .contact-links .contact-item {
+    width: calc(100% - 10px);
+  }
+  #CONTACT .container .contact-inputs .input-group .inputewidth {
+    width: 100%;
+  }
+  #CONTACT .container button {
+    width: 50%;
   }
 }
 @media screen and (max-width: 1024px) {
   body {
     background-color: yellowgreen;
   }
-  .home .container {
-    border: 10px solid red;
+  #home .container {
+    width: 100%;
+    padding: 100px;
     display: flex;
-    flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap-reverse;
     gap: 10px;
   }
+  .container .header-content {
+    width: 100%;
+    text-align: center;
+  }
+  .container .header-image {
+    width: 100%;
+  }
+
   .header-content .btn-group {
     display: flex;
     flex-direction: column;
@@ -34,21 +59,23 @@
   body {
     background-color: black;
   }
+  #gallery .gallery-images .col {
+    width: calc(100% - 30px);
+  }
 }
 @media screen and (max-width: 640px) {
-  /* ============================ start navbar ============================= */
-
   body {
     background-color: white;
   }
-  .navbar .nav-links a:hover::before,
-  .navbar a:hover a::before {
+  #navbar .nav-links a:hover::before,
+  #navbar a:hover a::before {
     width: 0;
   }
-  .navbar .nav-container .nav-links ul {
+  #navbar .nav-container .nav-links ul {
     position: absolute;
     top: 100%;
     left: 0;
+    right: 0;
     width: 100%;
     text-align: center;
     flex-direction: column;
@@ -57,22 +84,21 @@
     overflow: hidden;
     transition: max-height 1s;
   }
-  .navbar .nav-container .nav-links ul a {
+  #navbar .nav-container .nav-links ul a {
     display: block;
     padding-block: 10px;
   }
-  .navbar .nav-container label {
+  #navbar .nav-container label {
     display: block;
     margin-right: 20px;
   }
   .nav-container #menu:checked ~ .nav-links ul {
     max-height: 500px;
   }
-  .navbar .nav-container .home-active {
+  #navbar .nav-container .home-active {
     border: none;
   }
   .CHEFS-images .CHEFS-items {
     width: 100%;
   }
-  /* ============================ End navbar ============================= */
 }
